@@ -12,6 +12,7 @@ namespace PairProgramming
             int winScore = 42;
 
             Console.WriteLine("Match started !!\n");
+            Console.WriteLine(ShowRecords(player1, player2));
 
             while (true)
             {
@@ -26,18 +27,23 @@ namespace PairProgramming
                 else
                     Console.WriteLine("Error:> Invalid option try again");
 
-                
+                Console.WriteLine(ShowRecords(player1, player2));
+
                 if (player1 >= winScore || player2 >= winScore)
                 {
                     Console.Clear();
+                    Console.WriteLine(ShowRecords(player1, player2));
                     break;
                 }
             }
 
             Console.ReadLine();
         }
+
         private static string ShowRecords(int recordPlayer1, int recordPlayer2)
         {
+            string specialMessage = ShowSpecialMessage(recordPlayer1, recordPlayer2);
+            if (!string.IsNullOrEmpty(specialMessage)) return specialMessage;
             return $"Score:> Player 1 : ({recordPlayer1} Points) - Player 2 : ({recordPlayer2} Points)\n";
         }
 
@@ -46,7 +52,10 @@ namespace PairProgramming
             if (recordPlayer1 == 0 && recordPlayer2 == 0) return "PlayerOne 0 PlayerTwo 0\n";
             else if (recordPlayer1 == 30 && recordPlayer2 == 15) return "PlayerOne 30 PlayerTwo 15\n";
             else if (recordPlayer1 == 40 && recordPlayer2 == 40) return "Deuce\n";
-            
+            else if (recordPlayer1 == 41 && recordPlayer2 == 40) return "Advantage PlayerOne\n";
+            else if (recordPlayer1 == 40 && recordPlayer2 == 41) return "Advantage PlayerTwo\n";
+            else if (recordPlayer1 >= 42) return "PlayerOne wins\n";
+            else if (recordPlayer2 >= 42) return "PlayerTwo wins\n";
             else return string.Empty;
         }
     }
