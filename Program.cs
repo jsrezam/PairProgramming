@@ -35,6 +35,19 @@ namespace PairProgramming
             }
 
             Console.ReadLine();
-        }        
+        }
+        private static string ShowRecords(int recordPlayer1, int recordPlayer2)
+        {
+            return $"Score:> Player 1 : ({recordPlayer1} Points) - Player 2 : ({recordPlayer2} Points)\n";
+        }
+
+        private static string ShowSpecialMessage(int recordPlayer1, int recordPlayer2)
+        {
+            if (recordPlayer1 == 0 && recordPlayer2 == 0) return "PlayerOne 0 PlayerTwo 0\n";
+            else if (recordPlayer1 == 30 && recordPlayer2 == 15) return "PlayerOne 30 PlayerTwo 15\n";
+            else if (recordPlayer1 == 40 && recordPlayer2 == 40) return "Deuce\n";
+            
+            else return string.Empty;
+        }
     }
 }
